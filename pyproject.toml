@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "klog"
+version = "0.1.0"
+description = "Structured JSON logging with context binding and validation"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+dependencies = [
+    "structlog>=23.0",
+    "python-dotenv>=0.19",
+]
+
+[project.scripts]
+klog = "klog.cli:main"
+
+[project.optional-dependencies]
+api = []
+
+[project.urls]
+Repository = "https://github.com/Kord96/klog"
+
+[tool.setuptools.packages.find]
+include = ["klog*"]

@@ -1,0 +1,33 @@
+name: klog
+install: pip install klog
+pypi: klog
+
+purpose: |
+  Structured JSON logging with context binding and validation.
+  structlog-based with session IDs, trace context, field filtering,
+  dimension validation, and async batched API log pushing.
+
+when_to_use: |
+  - Setting up structured logging in any Python service
+  - Adding trace context and correlation IDs to logs
+  - Filtering logs by field values at runtime
+  - Pushing logs to an HTTP API endpoint
+  - Capturing logs in tests for assertions
+
+design:
+  pattern: "configure once → log everywhere"
+  key_classes:
+    - Logger: "Structured logger with context integration and extension hooks"
+    - configure_logging: "One-time setup — structlog processors, handlers, filters"
+    - log_context: "Context manager for dimension binding (nested, inheritable)"
+    - trace_context: "Context manager for service + trace_id binding"
+    - log_capture: "Test helper — capture logs for assertions"
+    - APIPushHandler: "Async batched HTTP log pushing (stdlib only)"
+
+monitoring:
+  metrics_prefix: ""
+  key_metrics: []
+
+testing:
+  note: "klog provides log_capture for testing — use it in other projects"
+  self_test: pytest tests/ -v
