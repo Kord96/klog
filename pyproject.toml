@@ -7,7 +7,7 @@ name = "klog"
 version = "0.1.0"
 description = "Structured JSON logging with context binding and validation"
 requires-python = ">=3.9"
-license = {text = "MIT"}
+license = "MIT"
 dependencies = [
     "structlog>=23.0",
     "python-dotenv>=0.19",
